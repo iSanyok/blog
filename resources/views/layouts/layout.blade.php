@@ -24,7 +24,7 @@
                 <li class="{{Request::path() === '' ? 'current_page_item' : ''}}"><a href="#" accesskey="3" title="">test111</a></li>
                 @if (Route::has('login'))
                         @auth
-                            <li><a href="{{ url('/home') }}" accesskey="4">Home</a></li>
+                            <li class="{{Request::path() === 'home' ? 'current_page_item' : ''}}"><a href="{{ url('/home') }}" accesskey="4">Home</a></li>
                         @else
                         <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="{{ url('/home') }}" accesskey="4" title="">Login</a></li>
 
