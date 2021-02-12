@@ -13,11 +13,17 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
+</div>
+@endsection
+
+@section('logout')
+<div style="margin-left: 96%; margin-top: 10px">
+    <a href="{{ route('logout') }}"><button type="submit" form="logout-form" class="btn btn-dark">logout</button></a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
 </div>
 @endsection
