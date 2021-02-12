@@ -137,6 +137,7 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1oIwNIgapwKK44o4GeeK5WeoTVn" />
@@ -160,6 +161,16 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/resources/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/article" />
+      <recent name="$PROJECT_DIR$/public/css" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -175,7 +186,9 @@
       <option name="presentableId" value="Default" />
       <updated>1612987371294</updated>
       <workItem from="1612987373388" duration="4164000" />
-      <workItem from="1613049063111" duration="358000" />
+      <workItem from="1613049063111" duration="13655000" />
+      <workItem from="1613082288598" duration="261000" />
+      <workItem from="1613082551125" duration="6336000" />
     </task>
     <servers />
   </component>

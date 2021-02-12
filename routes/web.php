@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
+Route::get('/add', [ArticleController::class, 'add'])->name('add');
+Route::post('/store', [ArticleController::class, 'store'])->name('store');
