@@ -1,24 +1,19 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+    <h2 style="margin-left: 12px; margin-bottom: 20px">My Articles</h2>
+    @foreach($articles as $article)
+    <div class="container" style="width: 1000px; margin-right: 30%">
+        <div style="border-bottom: 1px solid black">
+            <div class="title">
+                <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none"><h2>{{ $article->title }}</h2></a>
+                <span class="byline" style="word-break: break-all">{{ $article->description }}</span> </div>
+            <p style="margin-top: -30px"><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
+            <p style="word-break: break-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: -1px; margin-top: -20px">{{ $article->body }}</p>
+            <small>{{ $article->updated_at->format('d.m.Y') }}</small>
         </div>
     </div>
-</div>
+    @endforeach
 @endsection
 
 @section('logout')
