@@ -14,4 +14,14 @@ class Article extends Model
         'description',
         'body',
     ];
+
+    public function author ()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments ()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
