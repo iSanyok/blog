@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/profile/{id}', [HomeController::class, 'index'])->name('home');
 
 Route::get('/', [MainController::class, 'index'])->name('index');
-Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
+Route::get('/article/{id}', [ArticleController::class, 'show'])->name('show');
 Route::get('/add', [ArticleController::class, 'add'])->name('add');
 Route::post('/store', [ArticleController::class, 'store'])->name('store');

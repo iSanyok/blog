@@ -8,7 +8,7 @@
     </div>
     <p><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
     <p style="word-break: break-all; padding-bottom: 2em">{{ $article->body }}</p>
-    <label style="padding-bottom: 1em">Author: {{ $article->author->name }}</label>
+    <label style="padding-bottom: 1em">Author: <a href="{{ route('home', ['id' => $article->author->id]) }}" style="color: black"> {{ $article->author->name }}</a></label>
 
     <div>
         <h3 style="margin-bottom: 1em">Comments</h3>

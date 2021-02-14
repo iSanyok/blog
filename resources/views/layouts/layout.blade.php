@@ -23,16 +23,14 @@
                 <li class="{{Request::path() === 'add' ? 'current_page_item' : ''}}"><a href="{{ route('add') }}" accesskey="2" title="">Write article</a></li>
                 <li class="{{Request::path() === '' ? 'current_page_item' : ''}}"><a href="#" accesskey="3" title="">test111</a></li>
                 @if (Route::has('login'))
-
                     @auth
-                        <li class="{{Request::path() === 'home' ? 'current_page_item' : ''}}"><a href="{{ url('/home') }}" accesskey="4">Home</a></li>
+                        <li class="{{Request::path() === 'home' ? 'current_page_item' : ''}}"><a href="{{ route('home', ['id' => Auth::user()->id]) }}" accesskey="3">Home</a></li>
 
                     @else
-                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="{{ url('/home') }}" accesskey="4" title="">Login</a></li>
+                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="{{ route('home', ['id' => 0]) }}" accesskey="4" title="">Login</a></li>
 
                         @if (Route::has('register'))
                             <li class="{{Request::path() === 'register' ? 'current_page_item' : ''}}"><a href="{{ route('register') }}" accesskey="5" title="">Register</a></li>
-
                         @endif
                     @endauth
                     </div>
