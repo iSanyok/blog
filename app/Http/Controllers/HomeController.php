@@ -24,7 +24,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($id)
+    public function index()
+    {
+            $articles = Article::paginate(3);
+        return view('index', compact('articles'));
+    }
+
+    public function login()
+    {
+        return view('auth.login');
+    }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
+    public function profile($id)
     {
         $author = User::find($id);
         $articles = $author->articles;

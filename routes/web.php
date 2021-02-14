@@ -16,18 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Auth::routes();
+Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('/register', [HomeController::class, 'register'])->name('register');
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
-Route::get('/profile/{id}', [HomeController::class, 'index'])->name('home');
-
-Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('home');
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('show');
 Route::get('/add', [ArticleController::class, 'add'])->name('add');
 Route::post('/store', [ArticleController::class, 'store'])->name('store');

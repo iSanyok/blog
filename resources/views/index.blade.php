@@ -13,6 +13,7 @@
             <small>{{ $article->updated_at->format('d.m.Y') }}</small>
         </div>
         @endforeach
+        {{ $articles->links() }}
     </div>
 
     <div id="sidebar">
