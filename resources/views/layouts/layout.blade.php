@@ -27,7 +27,7 @@
                         <li class="{{Request::path() === 'home' ? 'current_page_item' : ''}}"><a href="{{ route('home', ['id' => Auth::user()->id]) }}" accesskey="3">Home</a></li>
 
                     @else
-                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="{{ route('home', ['id' => 0]) }}" accesskey="4" title="">Login</a></li>
+                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}"><a href="{{ route('login') }}" accesskey="4" title="">Login</a></li>
 
                         @if (Route::has('register'))
                             <li class="{{Request::path() === 'register' ? 'current_page_item' : ''}}"><a href="{{ route('register') }}" accesskey="5" title="">Register</a></li>

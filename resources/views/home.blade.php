@@ -2,7 +2,7 @@
 
 @section('content')
     <h2 style="margin-left: 12px; margin-bottom: 20px">My Articles</h2>
-    @foreach($articles as $article)
+    @forelse($articles as $article)
     <div class="container" style="width: 1000px; margin-right: 30%">
         <div style="border-bottom: 1px solid black">
             <div class="title">
@@ -13,12 +13,16 @@
             <small>{{ $article->updated_at->format('d.m.Y') }}</small>
         </div>
     </div>
-    @endforeach
+    @empty
+        <h2>TESETTEST</h2>
+    @endforelse
 @endsection
 
 @section('logout')
+    @auth
 <div style="margin-left: 96%; margin-top: 10px">
     <a href="{{ route('logout') }}"><button type="submit" form="logout-form" class="btn btn-dark">logout</button></a>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
 </div>
+    @endauth
 @endsection
