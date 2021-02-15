@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
 @section('content')
-    <h2 style="margin-left: 12px; margin-bottom: 20px">My Articles</h2>
-    @forelse($articles as $article)
+    <h2 style="margin-left: 12px; margin-bottom: 20px">{{ $author->name }}'s articles</h2>
+    @forelse($author->articles as $article)
     <div class="container" style="width: 1000px; margin-right: 30%">
         <div style="border-bottom: 1px solid black">
             <div class="title">

@@ -21,5 +21,5 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('home');
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('show');
 Route::post('/article/{id}/comment', [ArticleController::class, 'comment'])->name('comment');
-Route::get('/add', [ArticleController::class, 'add'])->name('add');
+Route::get('/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
 Route::post('/store', [ArticleController::class, 'store'])->name('store');

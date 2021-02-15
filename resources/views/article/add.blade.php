@@ -1,10 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-{{--    @guest--}}
-{{--        <script>window.location = '/login';</script>--}}
-{{--    @endguest--}}
-
     <form method="POST" action="{{ route('store') }}">
         @method('POST')
         @csrf

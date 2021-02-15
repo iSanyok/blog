@@ -19,12 +19,7 @@ class ArticleController extends Controller
 
     public function add ()
     {
-        if(auth()->check())
-        {
-            return view('article.add');
-        }
-
-        return view('auth.login');
+        return view('article.add');
     }
 
     public function store (Request $request)
