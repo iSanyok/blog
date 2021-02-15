@@ -19,7 +19,12 @@ class ArticleController extends Controller
 
     public function add ()
     {
-        return view('article.add');
+        if(auth()->check())
+        {
+            return view('article.add');
+        }
+
+        return view('auth.login');
     }
 
     public function store (Request $request)
@@ -33,5 +38,22 @@ class ArticleController extends Controller
         $article = new Article($data);
         $article->author_id = Auth::user()->id;
         $article->save();
+
+        return $this->show($article->id);
+    }
+
+    public function comment ($id, Request $request)
+    {
+        $request = $request->validate([
+            'content' => 'required',
+            'user_id' => 'required|integer',
+        ]);
+
+        $comment = new Comment($request);
+        $comment->article_id = $id;
+        $comment->user_id = $request['user_id'];
+        $comment->save();
+
+        return redirect('article/' . $id);
     }
 }

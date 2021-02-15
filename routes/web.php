@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', [HomeController::class, 'login'])->name('login');
-Route::get('/register', [HomeController::class, 'register'])->name('register');
+Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('home');
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('show');
+Route::post('/article/{id}/comment', [ArticleController::class, 'comment'])->name('comment');
 Route::get('/add', [ArticleController::class, 'add'])->name('add');
 Route::post('/store', [ArticleController::class, 'store'])->name('store');
