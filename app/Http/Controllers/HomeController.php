@@ -30,16 +30,6 @@ class HomeController extends Controller
         return view('index', compact('articles'));
     }
 
-    public function login()
-    {
-        return view('auth.login');
-    }
-
-    public function register()
-    {
-        return view('auth.register');
-    }
-
     public function profile($id)
     {
         $author = User::find($id);
