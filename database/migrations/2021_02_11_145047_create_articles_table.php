@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('body', 5000);
+            $table->string('banner')->nullable();
             $table->timestamps();
 
             $table->foreign('author_id')

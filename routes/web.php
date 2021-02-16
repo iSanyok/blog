@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('home');
+Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile');
 Route::get('/article/{id}', [ArticleController::class, 'show'])->name('show');
 Route::post('/article/{id}/comment', [ArticleController::class, 'comment'])->name('comment');
-Route::get('/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
-Route::post('/store', [ArticleController::class, 'store'])->name('store');
+Route::get('/article/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
+Route::post('/article/store', [ArticleController::class, 'store'])->name('store');
+Route::put('/article/{id}/update', [ArticleController::class, 'update'])->name('update')->middleware('auth');
+Route::delete('/article/{id}/delete', [ArticleController::class, 'delete'])->name('delete')->middleware('auth');

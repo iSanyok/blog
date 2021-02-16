@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <form method="POST" action="{{ route('store') }}">
+    <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
         @method('POST')
         @csrf
 
@@ -34,6 +34,11 @@
         @error('body')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
+
+        <div class="mb-3" style="padding-bottom: 5px; padding-top: 5px; width: 700px">
+            <label for="formFile" class="form-label">Select banner</label>
+            <input class="form-control" type="file" id="formFile" name="banner">
+        </div>
 
         <button type="submit" class="btn btn-dark">Write</button>
     </form>

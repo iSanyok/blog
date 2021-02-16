@@ -24,6 +24,6 @@ class HomeController extends Controller
     public function profile($id)
     {
         $author = User::find($id);
-        return view('home', compact('author'));
+        return view('profile', compact('author'));
     }
 }

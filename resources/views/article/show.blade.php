@@ -6,16 +6,17 @@
         <h2>{{ $article->title }}</h2>
         <span class="byline" style="word-break: break-all">{{ $article->description }}</span>
     </div>
-    <p><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
+    <p><img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid" /> </p>
     <p style="word-break: break-all; padding-bottom: 2em">{{ $article->body }}</p>
-    <label style="padding-bottom: 1em">Author: <a href="{{ route('home', ['id' => $article->author->id]) }}" style="color: black"> {{ $article->author->name }}</a></label>
-
+    <label style="padding-bottom: 1em">Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
+                                                  style="color: black"> {{ $article->author->name }}</a></label>
     <div>
         <h3 style="margin-bottom: 1em">Comments</h3>
         @forelse($comments as $comment)
         <div style="margin-bottom: 1em">
             <div style="border: 1px solid black">
-                <label style="font-size: 15px; border-bottom: 1px solid black; width: 699px">{{ $comment->user->name }}: </label>
+                <a href="{{ route('profile', ['id' => $comment->user->id]) }}" style="text-decoration: none">
+                    <h2 style="font-size: 15px; border-bottom: 1px solid black; width: 699px">{{ $comment->user->name }}: </h2></a>
                 <p style="word-break: break-all">{{ $comment->content }}</p>
             </div>
         </div>

@@ -4,17 +4,21 @@
     <h2 style="margin-left: 12px; margin-bottom: 20px">{{ $author->name }}'s articles</h2>
     @forelse($author->articles as $article)
     <div class="container" style="width: 1000px; margin-right: 30%">
-        <div style="border-bottom: 1px solid black">
+        <div style="border-bottom: 1px solid black; margin-bottom: 15px">
             <div class="title">
-                <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none"><h2>{{ $article->title }}</h2></a>
+                <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none">
+                    <h2>{{ $article->title }}</h2>
+                </a>
                 <span class="byline" style="word-break: break-all">{{ $article->description }}</span> </div>
-            <p style="margin-top: -30px"><img src="images/banner.jpg" alt="" class="image image-full" /> </p>
+            <p style="margin-top: -30px">
+                <img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid"/>
+            </p>
             <p style="word-break: break-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: -1px; margin-top: -20px">{{ $article->body }}</p>
             <small>{{ $article->updated_at->format('d.m.Y') }}</small>
         </div>
     </div>
     @empty
-        <h2>TESETTEST</h2>
+        <h2>No articles yet.</h2>
     @endforelse
 @endsection
 
