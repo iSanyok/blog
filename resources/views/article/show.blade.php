@@ -18,11 +18,8 @@
             <button type="submit" class="btn btn-dark">Delete article</button>
         </form>
 
-        <form method="POST" action="{{ route('update', ['id' => $article->id]) }}">
-            @csrf
-            @method("PUT")
-            <button type="submit" class="btn btn-dark">Edit article</button>
-        </form>
+        <a href="{{ route('edit', ['id' => $article->id]) }}"><button type="submit" class="btn btn-dark">Edit article</button>
+        </a>
     </div>
     @endif
     <div>

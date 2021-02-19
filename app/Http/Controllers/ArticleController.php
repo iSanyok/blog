@@ -25,9 +25,34 @@ class ArticleController extends Controller
         return view('article.add');
     }
 
-    public function update ($id)
+    public function edit ($id)
     {
-        dd('update');
+        $article = Article::find($id);
+        return view ('article.edit', compact('article'));
+    }
+
+    public function update ($id, Request $request)
+    {
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'body' => 'required',
+        ]);
+
+        Article::where('id', $id)->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'body' => $data['body']]);
+
+        if($request->file('banner'))
+        {
+            $article = Article::find($id);
+            Storage::delete('banners/' . $article->banner);
+            $request->file('banner')->store('banners');
+            Article::where('id', $id)->update(['banner' => $request->file('banner')->hashName()]);
+        }
+
+        return redirect(route('show', ['id' => $id]));
     }
 
     public function destroy ($id)
