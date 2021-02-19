@@ -12,7 +12,7 @@
                                                   style="color: black"> {{ $article->author->name }}</a></label>
     @if(Auth::user() && Auth::user()->id === $article->author->id)
     <div>
-        <form method="POST" action="{{ route('delete', ['id' => $article->id]) }}" style="float: left; margin-right: 20px">
+        <form method="POST" action="{{ route('destroy', ['id' => $article->id]) }}" style="float: left; margin-right: 20px">
             @csrf
             @method("DELETE")
             <button type="submit" class="btn btn-dark">Delete article</button>

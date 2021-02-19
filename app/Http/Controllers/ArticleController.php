@@ -30,13 +30,13 @@ class ArticleController extends Controller
         dd('update');
     }
 
-    public function delete ($id)
+    public function destroy ($id)
     {
-        dd('delete');
         $article = Article::find($id);
-        $article->delete;
+        Storage::delete('banners/' . $article->banner);
+        $article->delete();
 
-        return redirect()->back();
+        return redirect(route('index'));
     }
 
     public function store (Request $request)
@@ -54,7 +54,7 @@ class ArticleController extends Controller
         $article->banner = $request->file('banner')->hashName();
         $article->save();
 
-        return redirect('/article/' . $article->id);
+        return redirect(route('show', ['id' => $article->id]));
     }
 
     public function comment ($id, Request $request)

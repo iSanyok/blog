@@ -23,8 +23,8 @@ Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile')
 Route::prefix('article')->group(function() {
     Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
     Route::post('add/comment/{id}', [ArticleController::class, 'comment'])->name('comment');
-    Route::get('add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
+    Route::get('/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
     Route::post('/store', [ArticleController::class, 'store'])->name('store');
     Route::put('/update/{id}', [ArticleController::class, 'update'])->name('update')->middleware('auth');
-    Route::delete('/delete/{id}', [ArticleController::class, 'delete'])->name('delete')->middleware('auth');
+    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy')->middleware('auth');
 });
