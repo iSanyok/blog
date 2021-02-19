@@ -10,6 +10,21 @@
     <p style="word-break: break-all; padding-bottom: 2em">{{ $article->body }}</p>
     <label style="padding-bottom: 1em">Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
                                                   style="color: black"> {{ $article->author->name }}</a></label>
+    @if(Auth::user() && Auth::user()->id === $article->author->id)
+    <div>
+        <form method="POST" action="{{ route('delete', ['id' => $article->id]) }}" style="float: left; margin-right: 20px">
+            @csrf
+            @method("DELETE")
+            <button type="submit" class="btn btn-dark">Delete article</button>
+        </form>
+
+        <form method="POST" action="{{ route('update', ['id' => $article->id]) }}">
+            @csrf
+            @method("PUT")
+            <button type="submit" class="btn btn-dark">Edit article</button>
+        </form>
+    </div>
+    @endif
     <div>
         <h3 style="margin-bottom: 1em">Comments</h3>
         @forelse($comments as $comment)

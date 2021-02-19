@@ -27,11 +27,12 @@ class ArticleController extends Controller
 
     public function update ($id)
     {
-
+        dd('update');
     }
 
     public function delete ($id)
     {
+        dd('delete');
         $article = Article::find($id);
         $article->delete;
 
@@ -49,7 +50,7 @@ class ArticleController extends Controller
         $article = new Article($data);
         $article->author_id = Auth::user()->id;
 
-        $path = $request->file('banner')->store('banners');
+        $request->file('banner')->store('banners');
         $article->banner = $request->file('banner')->hashName();
         $article->save();
 

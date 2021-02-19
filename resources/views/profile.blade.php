@@ -10,7 +10,7 @@
                     <h2>{{ $article->title }}</h2>
                 </a>
                 <span class="byline" style="word-break: break-all">{{ $article->description }}</span> </div>
-            <p style="margin-top: -30px">
+            <p style="margin-top: -30px; max-width: 500px">
                 <img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid"/>
             </p>
             <p style="word-break: break-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: -1px; margin-top: -20px">{{ $article->body }}</p>

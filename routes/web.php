@@ -19,9 +19,12 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile');
-Route::get('/article/{id}', [ArticleController::class, 'show'])->name('show');
-Route::post('/article/{id}/comment', [ArticleController::class, 'comment'])->name('comment');
-Route::get('/article/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
-Route::post('/article/store', [ArticleController::class, 'store'])->name('store');
-Route::put('/article/{id}/update', [ArticleController::class, 'update'])->name('update')->middleware('auth');
-Route::delete('/article/{id}/delete', [ArticleController::class, 'delete'])->name('delete')->middleware('auth');
+
+Route::prefix('article')->group(function() {
+    Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
+    Route::post('add/comment/{id}', [ArticleController::class, 'comment'])->name('comment');
+    Route::get('add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
+    Route::post('/store', [ArticleController::class, 'store'])->name('store');
+    Route::put('/update/{id}', [ArticleController::class, 'update'])->name('update')->middleware('auth');
+    Route::delete('/delete/{id}', [ArticleController::class, 'delete'])->name('delete')->middleware('auth');
+});
