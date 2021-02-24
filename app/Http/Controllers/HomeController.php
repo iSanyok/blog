@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         return Auth::user()? view('profile', [
             'author' => $author,
-            'sub' => $author->followers->where('follower_id', Auth::user()->id)->count()]) :
+            'sub' => $author->followers->where('follower_id', Auth::user()->id)]) :
             view('profile', compact('author'));
 
     }

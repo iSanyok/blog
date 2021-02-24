@@ -25,7 +25,8 @@
 @section('menu')
     @auth
 <div style="margin-top: 1rem" id="sidebar">
-    @if($sub)
+    <h1>{{ count($sub) }}</h1>
+    @if(count($sub) > 0)
         <div style="margin-bottom: 1rem">
             <form action="{{ route('unsubscribe', ['id' => $author->id]) }}" method="POST">
                 @csrf
@@ -47,6 +48,9 @@
             <button type="submit" form="logout-form" class="btn btn-dark">logout</button>
         </form>
     </div>
+        @if(Auth::user() && Auth::user()->id == $author->id)
+
+        @endif
 </div>
     @endauth
 @endsection
