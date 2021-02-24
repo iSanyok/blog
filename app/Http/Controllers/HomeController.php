@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         return Auth::user()? view('profile', [
             'author' => $author,
-            'sub' => $author->followers->where('follower_id', Auth::user()->id),]) :
+            'sub' => $author->followers->where('follower_id', Auth::user()->id)->count()]) :
             view('profile', compact('author'));
 
     }
@@ -41,6 +41,14 @@ class HomeController extends Controller
         $subscription->follower_id = Auth::user()->id;
 
         $subscription->save();
+
+        return redirect(route('profile', ['id' => $id]));
+    }
+
+    public function unsubscribe($id)
+    {
+        $subscription = Subscription::where('author_id', $id)->where('follower_id', Auth::user()->id);
+        $subscription->delete();
 
         return redirect(route('profile', ['id' => $id]));
     }

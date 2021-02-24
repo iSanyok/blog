@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile');
 Route::post('/profile/subscribe/{id}', [HomeController::class, 'subscribe'])->name('subscribe')
     ->middleware('auth');
+Route::delete('/profile/unsubscribe/{id}', [HomeController::class, 'unsubscribe'])->name('unsubscribe')
+    ->middleware('auth');
 
 Route::prefix('article')->group(function() {
     Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');

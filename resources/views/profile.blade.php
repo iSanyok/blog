@@ -27,9 +27,10 @@
 <div style="margin-top: 1rem" id="sidebar">
     @if($sub)
         <div style="margin-bottom: 1rem">
-            <form action="{{ route('subscribe', ['id' => $author->id]) }}" method="POST">
+            <form action="{{ route('unsubscribe', ['id' => $author->id]) }}" method="POST">
                 @csrf
-                <button type="submit" class="btn btn-dark">SUBSCRIBED</button>
+                @method('DELETE')
+                <button type="submit" class="btn btn-dark">unsubscribe</button>
             </form>
         </div>
     @else
