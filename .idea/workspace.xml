@@ -153,7 +153,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/balance.php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -200,7 +200,11 @@
       <workItem from="1613427282024" duration="3204000" />
       <workItem from="1613472220133" duration="14225000" />
       <workItem from="1613572542042" duration="26000" />
-      <workItem from="1613736877092" duration="8866000" />
+      <workItem from="1613736877092" duration="9615000" />
+      <workItem from="1613831413718" duration="76000" />
+      <workItem from="1613860446346" duration="1340000" />
+      <workItem from="1614098855901" duration="3480000" />
+      <workItem from="1614161565669" duration="6311000" />
     </task>
     <servers />
   </component>

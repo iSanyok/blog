@@ -11,27 +11,26 @@ use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
-    public function show ($id)
+    public function show($id)
     {
         $article = Article::find($id);
-        $comments = Comment::where('article_id', $id)->get();
-        $banner = asset('storage/img.jpg');
+        $comments = $article->comments;
 
-        return view('article.show', compact('article', 'comments', 'banner'));
+        return view('article.show', compact('article', 'comments'));
     }
 
-    public function add ()
+    public function add()
     {
         return view('article.add');
     }
 
-    public function edit ($id)
+    public function edit($id)
     {
         $article = Article::find($id);
         return view ('article.edit', compact('article'));
     }
 
-    public function update ($id, Request $request)
+    public function update($id, Request $request)
     {
         $data = $request->validate([
             'title' => 'required',
@@ -55,7 +54,7 @@ class ArticleController extends Controller
         return redirect(route('show', ['id' => $id]));
     }
 
-    public function destroy ($id)
+    public function destroy($id)
     {
         $article = Article::find($id);
         Storage::delete('banners/' . $article->banner);
@@ -64,7 +63,7 @@ class ArticleController extends Controller
         return redirect(route('index'));
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'title' => 'required',
@@ -82,7 +81,7 @@ class ArticleController extends Controller
         return redirect(route('show', ['id' => $article->id]));
     }
 
-    public function comment ($id, Request $request)
+    public function comment($id, Request $request)
     {
         $request = $request->validate([
             'content' => 'required',

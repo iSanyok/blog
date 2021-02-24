@@ -22,11 +22,30 @@
     @endforelse
 @endsection
 
-@section('logout')
+@section('menu')
     @auth
-<div style="margin-left: 96%; margin-top: 10px">
-    <a href="{{ route('logout') }}"><button type="submit" form="logout-form" class="btn btn-dark">logout</button></a>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+<div style="margin-top: 1rem" id="sidebar">
+    @if($sub)
+        <div style="margin-bottom: 1rem">
+            <form action="{{ route('subscribe', ['id' => $author->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-dark">SUBSCRIBED</button>
+            </form>
+        </div>
+    @else
+        <div style="margin-bottom: 1rem">
+            <form action="{{ route('subscribe', ['id' => $author->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-dark">subscribe</button>
+            </form>
+        </div>
+    @endif
+    <div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" form="logout-form" class="btn btn-dark">logout</button>
+        </form>
+    </div>
 </div>
     @endauth
 @endsection

@@ -47,13 +47,11 @@
     </div>
 </div>
 
-@yield('logout')
+@yield('menu')
 
 <div id="wrapper">
     <div id="page" class="container">
-
         @yield('content')
-
     </div>
 </div>
 </body>
