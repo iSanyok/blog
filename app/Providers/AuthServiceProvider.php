@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -34,8 +35,10 @@ class AuthServiceProvider extends ServiceProvider
             return $author->id === $article->author->id;
         });
         Gate::define('subscribe', function (User $user, User $author) {
-
             return count($author->followers->where('follower_id', $user->id));
+        });
+        Gate::define('view-subscriptions', function (User $user, User $author) {
+            return $user->id === $author->id;
         });
     }
 }
