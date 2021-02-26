@@ -10,18 +10,22 @@
     <p style="word-break: break-all; padding-bottom: 2em">{{ $article->body }}</p>
     <label style="padding-bottom: 1em">Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
                                                   style="color: black"> {{ $article->author->name }}</a></label>
-    @if(Auth::user() && Auth::user()->id === $article->author->id)
-    <div>
-        <form method="POST" action="{{ route('destroy', ['id' => $article->id]) }}" style="float: left; margin-right: 20px">
-            @csrf
-            @method("DELETE")
-            <button type="submit" class="btn btn-dark">Delete article</button>
-        </form>
 
-        <a href="{{ route('edit', ['id' => $article->id]) }}"><button type="submit" class="btn btn-dark">Edit article</button>
-        </a>
-    </div>
-    @endif
+    @can('update-article', $article)
+        <div>
+            <form method="POST" action="{{ route('destroy', ['id' => $article->id]) }}" style="float: left; margin-right: 20px">
+                @csrf
+                @method("DELETE")
+                <button type="submit" class="btn btn-dark">Delete article</button>
+            </form>
+            @endcan
+
+            @can('delete-article', $article)
+            <a href="{{ route('edit', ['id' => $article->id]) }}">
+                <button type="submit" class="btn btn-dark">Edit article</button>
+            </a>
+        </div>
+    @endcan
     <div>
         <h3 style="margin-bottom: 1em">Comments</h3>
         @forelse($comments as $comment)

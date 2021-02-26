@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Subscription extends Model
@@ -15,13 +16,13 @@ class Subscription extends Model
         'follower_id',
     ];
 
-    public function followers(): HasMany
+    public function followers(): BelongsTo
     {
-        return $this->hasMany(User::class, 'follower_id');
+        return $this->belongsTo(User::class, 'follower_id');
     }
 
-    public function authors(): HasMany
+    public function authors(): BelongsTo
     {
-        return $this->hasMany(User::class, 'author_id');
+        return $this->belongsTo(User::class, 'author_id');
     }
 }

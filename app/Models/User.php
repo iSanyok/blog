@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Subscription::class, 'author_id');
     }
+
+    public function authors(): HasMany
+    {
+        return $this->hasMany(Subscription::class, 'follower_id');
+    }
 }

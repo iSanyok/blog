@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Subscription;
 use App\Models\User;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,12 +26,7 @@ class HomeController extends Controller
     public function profile($id)
     {
         $author = User::find($id);
-
-        return Auth::user()? view('profile', [
-            'author' => $author,
-            'sub' => $author->followers->where('follower_id', Auth::user()->id)]) :
-            view('profile', compact('author'));
-
+        return view('profile', compact('author'));
     }
 
     public function subscribe($id)
