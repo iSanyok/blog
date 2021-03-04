@@ -18,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('profile');
-Route::post('/profile/subscribe/{id}', [HomeController::class, 'subscribe'])->name('subscribe')
-    ->middleware('auth');
-Route::delete('/profile/unsubscribe/{id}', [HomeController::class, 'unsubscribe'])->name('unsubscribe')
-    ->middleware('auth');
 
-Route::prefix('article')->group(function() {
+Route::prefix('profile')->group(function () {
+    Route::get('/{id}', [HomeController::class, 'profile'])->name('profile');
+    Route::post('/subscribe/{id}', [HomeController::class, 'subscribe'])->name('subscribe')
+        ->middleware('auth');
+    Route::delete('/unsubscribe/{id}', [HomeController::class, 'unsubscribe'])->name('unsubscribe')
+        ->middleware('auth');
+});
+
+Route::prefix('article')->group(function () {
     Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
     Route::post('add/comment/{id}', [ArticleController::class, 'comment'])->name('comment');
     Route::get('/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
