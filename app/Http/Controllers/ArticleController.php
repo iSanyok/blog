@@ -16,7 +16,7 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $comments = $article->comments;
 
-        return view('article.show', compact('article', 'comments'));
+        return view('article.show', compact('article', 'comments',));
     }
 
     public function add()
@@ -81,7 +81,7 @@ class ArticleController extends Controller
         return redirect(route('show', ['id' => $article->id]));
     }
 
-    public function comment($id, Request $request)
+    public function storeComment($id, Request $request)
     {
         $request = $request->validate([
             'content' => 'required',
@@ -94,5 +94,21 @@ class ArticleController extends Controller
         $comment->save();
 
         return redirect()->back();
+    }
+
+    public function like($id)
+    {
+        $article = Article::find($id);
+        $article->like();
+
+        return back();
+    }
+
+    public function dislike($id)
+    {
+        $article = Article::find($id);
+        $article->dislike();
+
+        return back();
     }
 }

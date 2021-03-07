@@ -29,10 +29,12 @@ Route::prefix('profile')->group(function () {
 
 Route::prefix('article')->group(function () {
     Route::get('/show/{id}', [ArticleController::class, 'show'])->name('show');
-    Route::post('add/comment/{id}', [ArticleController::class, 'comment'])->name('comment');
+    Route::post('add/comment/{id}', [ArticleController::class, 'storeComment'])->name('storeComment');
     Route::get('/add', [ArticleController::class, 'add'])->middleware('auth')->name('add');
     Route::post('/store', [ArticleController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [ArticleController::class, 'edit'])->name('edit')->middleware('auth');
-    Route::put('/update/{id}', [ArticleController::class, 'update'])->name('update')->middleware('auth');
-    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->name('destroy')->middleware('auth');
+    Route::get('/edit/{id}', [ArticleController::class, 'edit'])->middleware('auth')->name('edit');
+    Route::put('/update/{id}', [ArticleController::class, 'update'])->middleware('auth')->name('update');
+    Route::delete('/delete/{id}', [ArticleController::class, 'destroy'])->middleware('auth')->name('destroy');
+    Route::post('/like/{id}', [ArticleController::class, 'like'])->middleware('auth')->name('like');
+    Route::delete('/dislike/{id}', [ArticleController::class, 'dislike'])->middleware('auth')->name('dislike');
 });

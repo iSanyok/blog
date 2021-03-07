@@ -27,7 +27,21 @@
         </div>
     @endcan
     <div>
-        <h3 style="margin-bottom: 1em">Comments</h3>
+        <div>
+{{--            <h2>Rating: {{ $rating }}</h2>--}}
+            <div>
+                <form method="POST" action="{{ route('dislike', ['id' => $article->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">-</button>
+                </form>
+                <form method="POST" action="{{ route('like', ['id' => $article->id]) }}">
+                    @csrf
+                    <button type="submit">+</button>
+                </form>
+            </div>
+            <h2 style="margin-bottom: 1em">Comments</h2>
+        </div>
         @forelse($comments as $comment)
         <div style="margin-bottom: 1em">
             <div style="border: 1px solid black">
@@ -39,7 +53,7 @@
         @empty
             <h2>No comments yet.</h2>
         @endforelse
-        <form method="POST" action="{{ route('comment', ['id' => $article->id]) }}">
+        <form method="POST" action="{{ route('storeComment', ['id' => $article->id]) }}">
             @csrf
             <textarea style="width: 700px;" rows="4" name="content"></textarea>
             @auth
