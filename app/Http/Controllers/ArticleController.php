@@ -15,8 +15,10 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $comments = $article->comments;
+        $likes = $article->likes->where('liked', true);
+        $dislikes = $article->likes->where('liked', false);
 
-        return view('article.show', compact('article', 'comments',));
+        return view('article.show', compact('article', 'comments', 'likes', 'dislikes'));
     }
 
     public function add()

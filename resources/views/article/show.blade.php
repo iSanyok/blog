@@ -28,7 +28,8 @@
     @endcan
     <div>
         <div>
-{{--            <h2>Rating: {{ $rating }}</h2>--}}
+            <h2>Likes: {{ count($likes) }}</h2>
+            <h2>Dislikes: {{ count($dislikes) }}</h2>
             <div>
                 <form method="POST" action="{{ route('dislike', ['id' => $article->id]) }}">
                     @csrf
