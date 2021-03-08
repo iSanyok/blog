@@ -3,22 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Like;
 use App\Models\Subscription;
 use App\Models\User;
-use Illuminate\Auth\Access\Gate;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Показать главную страницу сайта
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
-
-    public function index()
+    public function index(): Renderable
     {
         $articles = Article::latest()->paginate(5);
         $popular = Article::selectRaw('articles.*, sum(likes.liked) likes')
@@ -30,13 +28,25 @@ class HomeController extends Controller
         return view('index', compact('articles', 'popular'));
     }
 
-    public function profile($id)
+    /**
+     * Показать профиль пользователя
+     *
+     * @param int $id
+     * @return Renderable
+     */
+    public function profile(int $id): Renderable
     {
         $author = User::find($id);
         return view('profile', compact('author'));
     }
 
-    public function subscribe($id)
+    /**
+     * Подписка на автора
+     *
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function subscribe(int $id): RedirectResponse
     {
         $subscription = new Subscription();
 
@@ -48,7 +58,13 @@ class HomeController extends Controller
         return redirect(route('profile', ['id' => $id]));
     }
 
-    public function unsubscribe($id)
+    /**
+     * Отписка от автора
+     *
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function unsubscribe(int $id): RedirectResponse
     {
         $subscription = Subscription::where('author_id', $id)->where('follower_id', Auth::user()->id);
         $subscription->delete();
