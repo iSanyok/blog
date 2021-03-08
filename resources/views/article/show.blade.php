@@ -31,12 +31,12 @@
             <h2>Likes: {{ count($likes) }}</h2>
             <h2>Dislikes: {{ count($dislikes) }}</h2>
             <div>
-                <form method="POST" action="{{ route('dislike', ['id' => $article->id]) }}">
+                <form method="POST" action="{{ route('dislike', ['id' => $article->id]) }}" style="float: left">
                     @csrf
                     @method('DELETE')
                     <button type="submit">-</button>
                 </form>
-                <form method="POST" action="{{ route('like', ['id' => $article->id]) }}">
+                <form method="POST" action="{{ route('like', ['id' => $article->id]) }}" style="margin-left: 2em">
                     @csrf
                     <button type="submit">+</button>
                 </form>

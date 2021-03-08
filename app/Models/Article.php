@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use PhpParser\Builder;
 
 class Article extends Model
 {
@@ -32,7 +33,7 @@ class Article extends Model
         return $this->hasMany(Like::class);
     }
 
-    public function like($liked = true)
+    public function like($liked = true): Model
     {
         return $this->likes()->updateOrCreate(
             [
@@ -44,7 +45,7 @@ class Article extends Model
         );
     }
 
-    public function dislike()
+    public function dislike(): Model
     {
         return $this->like(false);
     }

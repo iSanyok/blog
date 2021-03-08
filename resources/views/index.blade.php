@@ -19,19 +19,18 @@
 
     <div id="sidebar">
         <ul class="style1">
-            <h2>most popular</h2>
-            <li>
-                <h3>Amet sed volutpat mauris</h3>
-                <p><a href="#">In posuere eleifend odio. Quisque semper augue mattis wisi. Pellentesque viverra vulputate enim. Aliquam erat volutpat.</a></p>
-            </li>
-            <li>
-                <h3>Sagittis diam dolor sit amet</h3>
-                <p><a href="#">In posuere eleifend odio. Quisque semper augue mattis wisi. Pellentesque viverra vulputate enim. Aliquam erat volutpat.</a></p>
-            </li>
-            <li>
-                <h3>Maecenas ac quam risus</h3>
-                <p><a href="#">In posuere eleifend odio. Quisque semper augue mattis wisi. Pellentesque viverra vulputate enim. Aliquam erat volutpat.</a></p>
-            </li>
+            <h2 style="border-bottom: solid black 1px">most popular</h2>
+            @foreach($popular as $article)
+                <div style="border-bottom: 1px solid black">
+                    <div class="title">
+                        <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none"><h2>{{ $article->title }}</h2></a>
+                        <p>{{ $article->description }}</p>
+                    </div>
+                    <p style="margin-top: -30px; max-width: 500px">
+                    <small>{{ $article->updated_at->format('d.m.Y') }}</small>
+                        <small style="margin-left: 60%">Likes: {{ $article->likes }} </small>
+                </div>
+            @endforeach
         </ul>
     </div>
 @endsection

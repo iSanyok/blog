@@ -24,8 +24,6 @@
                     <a href="{{ route('index') }}" accesskey="1" title="">Homepage</a></li>
                 <li class="{{Request::path() === 'add' ? 'current_page_item' : ''}}">
                     <a href="{{ route('add') }}" accesskey="2" title="">Write article</a></li>
-                <li class="{{Request::path() === '' ? 'current_page_item' : ''}}">
-                    <a href="#" accesskey="3" title="">test111</a></li>
                 @if (Route::has('login'))
                     @auth
                         <li class="{{Request::path() === 'home' ? 'current_page_item' : ''}}">
@@ -54,5 +52,6 @@
         @yield('content')
     </div>
 </div>
+<script src="http://unpkg.com/turbolinks"></script>
 </body>
 </html>

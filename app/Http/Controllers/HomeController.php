@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Like;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Auth\Access\Gate;
@@ -19,8 +20,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        $articles = Article::latest()->paginate(3);
-        return view('index', compact('articles'));
+        $articles = Article::latest()->paginate(5);
+        $popular = Article::selectRaw('articles.*, sum(likes.liked) likes')
+            ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
+            ->groupBy('likes.article_id')
+            ->orderBy('likes', 'desc')
+            ->take(5)
+            ->get();
+        return view('index', compact('articles', 'popular'));
     }
 
     public function profile($id)
