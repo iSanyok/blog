@@ -31,11 +31,11 @@
 
                     @else
                         <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">
-                            <a href="{{ route('login') }}" accesskey="4" title="">Login</a></li>
+                            <a href="{{ route('login') }}" accesskey="4" title="">Sign in</a></li>
 
                         @if (Route::has('register'))
                             <li class="{{Request::path() === 'register' ? 'current_page_item' : ''}}">
-                                <a href="{{ route('register') }}" accesskey="5" title="">Register</a></li>
+                                <a href="{{ route('register') }}" accesskey="5" title="">Sign up</a></li>
                         @endif
                     @endauth
                     </div>
