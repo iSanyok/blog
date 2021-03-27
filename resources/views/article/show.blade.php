@@ -54,16 +54,17 @@
         @empty
             <h2>No comments yet.</h2>
         @endforelse
-        <form method="POST" action="{{ route('storeComment', ['id' => $article->id]) }}">
-            @csrf
-            <textarea style="width: 700px;" rows="4" name="content"></textarea>
-            @auth
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                <button type="submit" class="btn btn-dark" style="margin-top: 15px">comment</button>
-            @else
+        @auth
+            <form method="POST" action="{{ route('storeComment', ['id' => $article->id]) }}">
+                @csrf
+                <textarea style="width: 700px;" rows="4" name="content"></textarea>
+
+                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                    <button type="submit" class="btn btn-dark" style="margin-top: 15px">comment</button>
+        @else
                 <h2 style="font-family: 'Cantarell Extra Bold'">Only authorized users can leave comments</h2>
-            @endauth
-        </form>
+            </form>
+        @endauth
     </div>
 </div>
 @endsection
