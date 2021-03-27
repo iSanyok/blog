@@ -23,20 +23,7 @@
     </div>
 
     <div id="sidebar">
-{{--        <ul class="style1">--}}
-{{--            <h2 style="border-bottom: solid black 1px">most popular</h2>--}}
-{{--            @foreach($popular as $article)--}}
-{{--                <div style="border-bottom: 1px solid black">--}}
-{{--                    <div class="title">--}}
-{{--                        <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none"><h2>{{ $article->title }}</h2></a>--}}
-{{--                        <p>{{ $article->description }}</p>--}}
-{{--                    </div>--}}
-{{--                    <p style="margin-top: -30px; max-width: 500px">--}}
-{{--                    <small>{{ $article->updated_at->format('d.m.Y') }}</small>--}}
-{{--                    <small style="margin-left: 60%">Likes: {{ $article->likes }} </small>--}}
-{{--                </div>--}}
-{{--            @endforeach--}}
-{{--        </ul>--}}
+        <h1>most popular</h1>
         @foreach($popular as $article)
         <div class="row g-0 bg-light position-relative mb-3">
             <div class="col-md-6 mb-md-0 p-md-4">

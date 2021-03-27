@@ -27,7 +27,7 @@
                 @if (Route::has('login'))
                     @auth
                         <li class="{{Request::path() === 'home' ? 'current_page_item' : ''}}">
-                            <a href="{{ route('profile', ['id' => Auth::user()->id]) }}" accesskey="3">Home</a></li>
+                            <a href="{{ route('profile', ['id' => Auth::user()->id]) }}" accesskey="3">{{ Auth::user()->name }}</a></li>
 
                     @else
                         <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">
