@@ -140,7 +140,7 @@ class ArticleController extends Controller
         $comment->user_id = $request['user_id'];
         $comment->save();
 
-        return redirect()->back();
+        return back();
     }
 
     /**
