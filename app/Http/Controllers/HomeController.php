@@ -19,7 +19,6 @@ class HomeController extends Controller
     public function index(): Renderable
     {
         $articles = Article::latest()->paginate(5);
-//        dd($articles[0]->likes);
         $popular = Article::selectRaw('articles.*, sum(likes.liked) likes')
             ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
             ->groupBy('likes.article_id')

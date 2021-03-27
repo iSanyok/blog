@@ -3,17 +3,6 @@
 @section('content')
     <div id="content">
     @foreach($articles as $article)
-{{--        <div style="border-bottom: 1px solid black">--}}
-{{--        <div class="title">--}}
-{{--            <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none"><h2>{{ $article->title }}</h2></a>--}}
-{{--            <span class="byline" style="word-break: break-all">{{ $article->description }}</span> </div>--}}
-{{--        <p style="margin-top: -30px; max-width: 500px">--}}
-{{--            <img src="{{ asset("banners") . "/" . $article->banner }}"--}}
-{{--                 alt="" class="image image-full" style="max-height: 650px"/></p>--}}
-{{--        <p style="word-break: break-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: -1px; margin-top: -20px">{{ $article->body }}</p>--}}
-{{--            <small>{{ $article->updated_at->format('d.m.Y') }}</small>--}}
-{{--        </div>--}}
-
             <div class="row g-0 bg-light position-relative mb-3">
                 <div class="col-md-6 mb-md-0 p-md-4">
                     <img src="{{ asset("banners") . "/" . $article->banner }}" class="w-100" alt="...">
