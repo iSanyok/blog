@@ -10,7 +10,6 @@
     <link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
 </head>
 <body>
 <div id="header-wrapper">
@@ -52,6 +51,7 @@
         @yield('content')
     </div>
 </div>
-<script src="http://unpkg.com/turbolinks"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SidebarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -67,3 +68,8 @@ Route::prefix('article')->group(function () {
         ->middleware('auth')
         ->name('dislike');
 });
+
+Route::get('/get/today', [SidebarController::class, 'getToday'])->name('getToday');
+Route::get('/get/week', [SidebarController::class, 'getWeek'])->name('getWeek');
+Route::get('/get/mouth', [SidebarController::class, 'getMouth'])->name('getMouth');
+Route::get('/get/yead', [SidebarController::class, 'getYear'])->name('getYear');
