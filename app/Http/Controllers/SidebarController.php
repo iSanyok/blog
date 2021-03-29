@@ -4,30 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 
 class SidebarController extends Controller
 {
-    public function getToday()
+    public function getToday(): JsonResponse
     {
         return $this->response(0);
     }
 
-    public function getWeek()
+    public function getWeek(): JsonResponse
     {
         return $this->response(7);
     }
 
-    public function getMouth()
+    public function getMouth(): JsonResponse
     {
         return $this->response(30);
     }
 
-    public function getYear()
+    public function getYear(): JsonResponse
     {
         return $this->response(365);
     }
 
-    private function response(int $days)
+    private function response(int $days): JsonResponse
     {
         $articles = Article::selectRaw('articles.*, sum(likes.liked) likes')
             ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
