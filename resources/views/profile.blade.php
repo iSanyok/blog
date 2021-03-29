@@ -1,25 +1,33 @@
 @extends('layouts.layout')
 
 @section('content')
-    <h2 style="margin-left: 12px; margin-bottom: 20px">{{ $author->name }}'s articles</h2>
-    @forelse($author->articles as $article)
-    <div class="container" style="width: 1000px; margin-right: 30%">
-        <div style="border-bottom: 1px solid black; margin-bottom: 15px">
-            <div class="title">
-                <a href="{{ route('show', ['id' => $article->id]) }}" style="text-decoration: none">
-                    <h2>{{ $article->title }}</h2>
-                </a>
-                <span class="byline" style="word-break: break-all">{{ $article->description }}</span> </div>
-            <p style="margin-top: -30px; max-width: 500px">
-                <img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid"/>
-            </p>
-            <p style="word-break: break-all; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: -1px; margin-top: -20px">{{ $article->body }}</p>
-            <small>{{ $article->updated_at->format('d.m.Y') }}</small>
-        </div>
+    <div id="content">
+        <h2 style="margin-left: 12px; margin-bottom: 20px">{{ $author->name }}'s articles</h2>
+        @forelse($articles as $article)
+            <div class="row g-0 bg-light position-relative mb-3">
+                <div class="col-md-6 mb-md-0 p-md-4">
+                    <img src="{{ asset("banners") . "/" . $article->banner }}" class="w-100" alt="...">
+                </div>
+                <div class="col-md-6 p-4 ps-md-0" style="position: relative">
+                    <h5 class="mt-0">{{ $article->title }}</h5>
+                    <p>{{ $article->description }}</p>
+                    <a href="{{ route('show', ['id' => $article->id]) }}" class="stretched-link"
+                       style="text-decoration: none; color: dimgray">
+                        <div class="d-flex flex-nowrap bd-highlight align-self-end "
+                             style="position: absolute; bottom: 0; left: 10em">
+                            <div class="order-1 p-2 bd-highlight">
+                                <small>{{ $article->updated_at->format('d.m.Y') }}</small></div>
+                            <div class="order-3 p-2 bd-highlight"><small>Likes: {{ count($article->likes) }}</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        @empty
+            <h2>No articles yet.</h2>
+        @endforelse
+        {{ $articles->links() }}
     </div>
-    @empty
-        <h2>No articles yet.</h2>
-    @endforelse
 @endsection
 
 @section('menu')

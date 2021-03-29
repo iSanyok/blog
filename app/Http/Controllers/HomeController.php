@@ -37,7 +37,8 @@ class HomeController extends Controller
     public function profile(int $id): Renderable
     {
         $author = User::find($id);
-        return view('profile', compact('author'));
+        $articles = Article::where('author_id', $id)->latest()->paginate(5);
+        return view('profile', compact('author', 'articles'));
     }
 
     /**

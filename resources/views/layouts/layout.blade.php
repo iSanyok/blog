@@ -18,7 +18,7 @@
             <a class="nav-link" aria-current="page" href="{{ route('index') }}">BLOZHEK</a>
         </li>
         @auth
-            <li class="nav-item dropdown me-3">
+            <li class="nav-item dropdown me-5">
                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
                    aria-expanded="false">{{ Auth::user()->name }}</a>
                 <ul class="dropdown-menu">

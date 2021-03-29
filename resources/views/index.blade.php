@@ -2,7 +2,6 @@
 
 @section('content')
     <div id="content">
-
         @foreach($articles as $article)
             <div class="row g-0 bg-light position-relative mb-3">
                 <div class="col-md-6 mb-md-0 p-md-4">
