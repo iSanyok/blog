@@ -1,8 +1,8 @@
-$(window).on('load', request($('.nav-link.active')));
+$(window).on('load', request($('.nav-link.sidebar.active')));
 
-$('.nav-link').on('click', function (event) {
+$('.nav-link.sidebar').on('click', function (event) {
     event.preventDefault();
-    $('.nav-link.active').removeClass(' active');
+    $('.nav-link.sidebar.active').removeClass(' active');
     this.className += ' active';
 
     request(this);
