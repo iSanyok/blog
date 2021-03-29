@@ -15,6 +15,7 @@ function request(item) {
         success: function (result) {
             $('div').remove('#articles');
             $('#msg').remove();
+            console.log(result);
             if (result.length === 0) {
                 $('#sidebar').append('<h5 id="msg">There were no articles today</h5>');
             }

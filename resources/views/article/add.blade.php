@@ -9,7 +9,10 @@
             <div><label style="font-size: 20px">
                     Title
                 </label></div>
-            <input type="text" name="title" style="width: 550px" value="{{ old('title') }}">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" aria-label="Sizing example input" name="title"
+                        value="{{ old('title') }}" aria-describedby="inputGroup-sizing-default">
+                </div>
         </div>
         @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -19,7 +22,10 @@
             <div><label style="font-size: 20px">
                     Description
                 </label></div>
-            <input type="text" name="description" style="width: 550px" value="{{ old('description') }}">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" aria-label="Sizing example input" name="description"
+                       value="{{ old('description') }}" aria-describedby="inputGroup-sizing-default">
+            </div>
         </div>
         @error('description')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -29,7 +35,10 @@
             <div><label style="font-size: 20px">
                     Body
                 </label></div>
-            <textarea name="body" style="width: 700px; font-family: Arial" placeholder="Write something interesting!" rows="10">{{ old('body') }}</textarea>
+            <div class="form-floating">
+                <textarea class="form-control" name="body"
+                          id="floatingTextarea2" style="height: 15em"> {{ old('body') }}</textarea>
+            </div>
         </div>
         @error('body')
         <div class="alert alert-danger">{{ $message }}</div>

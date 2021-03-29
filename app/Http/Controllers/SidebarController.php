@@ -10,7 +10,7 @@ class SidebarController extends Controller
 {
     public function getToday(): JsonResponse
     {
-        return $this->response(0);
+        return $this->response();
     }
 
     public function getWeek(): JsonResponse
@@ -28,11 +28,11 @@ class SidebarController extends Controller
         return $this->response(365);
     }
 
-    private function response(int $days): JsonResponse
+    private function response(int $days = 0): JsonResponse
     {
         $articles = Article::selectRaw('articles.*, sum(likes.liked) likes')
             ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
-            ->where('articles.created_at', '>', Carbon::now()->subDays($days))
+            ->where('articles.created_at', '>', $days? Carbon::now()->subDays($days) : Carbon::now()->subDay())
             ->groupBy('likes.article_id')
             ->orderBy('likes', 'desc')
             ->take(5)
