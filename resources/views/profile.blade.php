@@ -32,38 +32,32 @@
 
 @section('menu')
     @auth
-<div style="margin-top: 1rem" id="sidebar">
-    @if(Auth::user()->id != $author->id)
-        @can('subscribe', $author)
-            <div style="margin-bottom: 1rem">
-                <form action="{{ route('unsubscribe', ['id' => $author->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-dark">unsubscribe</button>
-                </form>
-            </div>
-        @else
-            <div style="margin-bottom: 1rem">
-                <form action="{{ route('subscribe', ['id' => $author->id]) }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-dark">subscribe</button>
-                </form>
-            </div>
-        @endcan
-    @endif
-    <div>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" form="logout-form" class="btn btn-dark">logout</button>
-        </form>
-    </div>
-        @can('view-subscriptions', $author)
-            <h2 style="margin-top: 1rem">subscribes</h2>
-            @foreach($author->authors as $a)
-                <a href="{{ route('profile', ['id' => $a->authors->id]) }}" style="color: black">
-                    <h1>{{ $a->authors->name }}</h1></a>
-            @endforeach
-        @endcan
-</div>
+        <div style="margin-top: 1rem" id="sidebar">
+            @if(Auth::user()->id != $author->id)
+                @can('subscribe', $author)
+                    <div style="margin-bottom: 1rem">
+                        <form action="{{ route('unsubscribe', ['id' => $author->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-dark">unsubscribe</button>
+                        </form>
+                    </div>
+                @else
+                    <div style="margin-bottom: 1rem">
+                        <form action="{{ route('subscribe', ['id' => $author->id]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-dark">subscribe</button>
+                        </form>
+                    </div>
+                @endcan
+            @endif
+            @can('view-subscriptions', $author)
+                <h2 style="margin-top: 1rem">subscribes</h2>
+                @foreach($author->authors as $a)
+                    <a href="{{ route('profile', ['id' => $a->authors->id]) }}" style="color: black">
+                        <h1>{{ $a->authors->name }}</h1></a>
+                @endforeach
+            @endcan
+        </div>
     @endauth
 @endsection
