@@ -7,8 +7,8 @@
             <span class="byline" style="word-break: break-all">{{ $article->description }}</span>
         </div>
         <p><img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid"/></p>
-        <p style="word-break: break-all; padding-bottom: 2em">{{ $article->body }}</p>
-        <label style="padding-bottom: 1em">Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
+        <p style="word-break: break-all">{{ $article->body }}</p>
+        <label>Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
                                                       style="color: black"> {{ $article->author->name }}</a></label>
 
         @can('update-article', $article)

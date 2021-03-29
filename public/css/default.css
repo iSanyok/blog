@@ -13,7 +13,6 @@ body
 	font-size: 11pt;
 	font-weight: 300;
 	color: #6c6c6c;
-
 }
 
 .logout-button
@@ -1017,7 +1016,7 @@ body {
     font-weight: 400;
     line-height: 1.5;
     color: #212529;
-    background-color: #fff;
+    background-color: #0a53be;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -8380,6 +8379,10 @@ textarea.form-control-lg {
 
 .bg-white {
     background-color: #fff !important;
+}
+
+.bg-gray {
+    background-color: #E3E3E3 !important;
 }
 
 .bg-transparent {

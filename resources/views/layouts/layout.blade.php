@@ -30,7 +30,9 @@
                     </li>
                     <li>
                         <a class="dropdown-item" role="button">
-                            <button type="submit" form="logout-form" class="logout-button justify-content-start">logout</button>
+                            <button type="submit" form="logout-form" class="logout-button justify-content-start">
+                                logout
+                            </button>
                         </a>
                     </li>
                 </ul>
@@ -46,54 +48,13 @@
                 <a class="nav-link" href="{{ route('register') }}">Sign up</a>
             </li>
         @endauth
-
     </ul>
-    {{--    <div id="header" class="container">--}}
-    {{--        <div id="logo">--}}
-    {{--            <h1><a href="{{ route('index') }}">{{ config('app.name') }}</a></h1>--}}
-    {{--        </div>--}}
-    {{--        <div id="menu">--}}
-    {{--            <ul>--}}
-    {{--                <li class="{{Request::path() === '/' ? 'current_page_item' : ''}}">--}}
-    {{--                    <a href="{{ route('index') }}" accesskey="1" title="">Homepage</a></li>--}}
-    {{--                <li class="{{Request::path() === 'add' ? 'current_page_item' : ''}}">--}}
-    {{--                    <a href="{{ route('add') }}" accesskey="2" title="">Write article</a></li>--}}
-    {{--                @if (Route::has('login'))--}}
-    {{--                    @auth--}}
-    {{--                        <li>--}}
-    {{--                            <div class="dropdown">--}}
-    {{--                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">--}}
-    {{--                                    Dropdown button--}}
-    {{--                                </button>--}}
-    {{--                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">--}}
-    {{--                                    <li><a class="dropdown-item" href="#">Action</a></li>--}}
-    {{--                                    <li><a class="dropdown-item" href="#">Another action</a></li>--}}
-    {{--                                    <li><a class="dropdown-item" href="#">Something else here</a></li>--}}
-    {{--                                </ul>--}}
-    {{--                            </div>--}}
-    {{--                            <a href="{{ route('profile', ['id' => Auth::user()->id]) }}" accesskey="3">{{ Auth::user()->name }}</a>--}}
-    {{--                        </li>--}}
-
-    {{--                    @else--}}
-    {{--                        <li class="{{Request::path() === 'login' ? 'current_page_item' : ''}}">--}}
-    {{--                            <a href="{{ route('login') }}" accesskey="4" title="">Sign in</a></li>--}}
-
-    {{--                        @if (Route::has('register'))--}}
-    {{--                            <li class="{{Request::path() === 'register' ? 'current_page_item' : ''}}">--}}
-    {{--                                <a href="{{ route('register') }}" accesskey="5" title="">Sign up</a></li>--}}
-    {{--                        @endif--}}
-    {{--                    @endauth--}}
-    {{--                    </div>--}}
-    {{--                @endif--}}
-    {{--            </ul>--}}
-    {{--        </div>--}}
-</div>
 </div>
 
-@yield('menu')
 
-<div id="wrapper">
+<div id="wrapper" class="bg-gray">
     <div id="page" class="container">
+        @yield('menu')
         @yield('content')
     </div>
 </div>

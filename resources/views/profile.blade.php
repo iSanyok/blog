@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div id="content">
+    <div id="content" class="ms-3">
         <h2 style="margin-left: 12px; margin-bottom: 20px">{{ $author->name }}'s articles</h2>
         @forelse($articles as $article)
             <div class="row g-0 bg-light position-relative mb-3">
@@ -32,7 +32,7 @@
 
 @section('menu')
     @auth
-        <div style="margin-top: 1rem" id="sidebar">
+        <div id="sidebar" class="me-3">
             @if(Auth::user()->id != $author->id)
                 @can('subscribe', $author)
                     <div style="margin-bottom: 1rem">

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div id="content">
+    <div id="content" class="ms-3">
         @foreach($articles as $article)
             <div class="row g-0 bg-light position-relative mb-3">
                 <div class="col-md-6 mb-md-0 p-md-4">
@@ -26,7 +26,7 @@
         {{ $articles->links() }}
     </div>
 
-    <div id="sidebar">
+    <div id="sidebar" class="me-3">
         <h1>most popular</h1>
         <ul class="nav nav-tabs" id="nav">
             <li class="nav-item">

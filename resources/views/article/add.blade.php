@@ -1,13 +1,13 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div style="width: 44em">
+    <div style="width: 44em" class="ms-3">
         <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
             @method('POST')
             @csrf
 
-            <div style="padding-bottom: 5px">
-                <div><label style="font-size: 20px">
+            <div>
+                <div><label>
                         Title
                     </label></div>
                     <div class="input-group mb-3">
@@ -19,8 +19,8 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-            <div style="padding-bottom: 5px; padding-top: 5px">
-                <div><label style="font-size: 20px">
+            <div>
+                <div><label>
                         Description
                     </label></div>
                 <div class="input-group mb-3">
@@ -32,8 +32,8 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-            <div style="padding-bottom: 5px; padding-top: 5px">
-                <div><label style="font-size: 20px">
+            <div>
+                <div><label>
                         Body
                     </label></div>
                 <div class="form-floating">
@@ -45,12 +45,12 @@
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-            <div class="mb-3" style="padding-bottom: 5px; padding-top: 5px; width: 700px">
+            <div class="mt-3">
                 <label for="formFile" class="form-label">Select banner</label>
                 <input class="form-control" type="file" id="formFile" name="banner">
             </div>
 
-            <button type="submit" class="btn btn-dark">Write</button>
+            <button type="submit" class="btn btn-dark mt-2">Write</button>
         </form>
     </div>
 @endsection
