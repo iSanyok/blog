@@ -33,6 +33,7 @@ class SidebarController extends Controller
         $articles = Article::selectRaw('articles.*, sum(likes.liked) likes')
             ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
             ->where('articles.created_at', '>', $days? Carbon::now()->subDays($days) : Carbon::now()->subDay())
+            ->where('likes.liked', '>', '0')
             ->groupBy('likes.article_id')
             ->orderBy('likes', 'desc')
             ->take(5)
