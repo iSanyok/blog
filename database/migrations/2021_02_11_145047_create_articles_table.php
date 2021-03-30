@@ -20,6 +20,7 @@ class CreateArticlesTable extends Migration
             $table->string('description');
             $table->string('body', 5000);
             $table->string('banner')->nullable();
+            $table->integer('rating')->default(0);
             $table->timestamps();
 
             $table->foreign('author_id')

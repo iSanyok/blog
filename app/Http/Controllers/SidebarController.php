@@ -33,7 +33,6 @@ class SidebarController extends Controller
         $articles = Article::selectRaw('articles.*, sum(likes.liked) likes')
             ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
             ->where('articles.created_at', '>', $days? Carbon::now()->subDays($days) : Carbon::now()->subDay())
-            ->where('likes.liked', '>', '0')
             ->groupBy('likes.article_id')
             ->orderBy('likes', 'desc')
             ->take(5)
@@ -48,7 +47,7 @@ class SidebarController extends Controller
             $arr['description'] = $article->description;
             $arr['body'] = $article->body;
             $arr['banner'] = asset("banners") . "/" . $article->banner;
-            $arr['likes'] = $article->likes;
+            $arr['rating'] = $article->rating;
             $arr['updated'] = $article->updated_at->format('d.m.Y');
 
             $response[] = $arr;

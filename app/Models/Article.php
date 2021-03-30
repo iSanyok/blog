@@ -16,6 +16,7 @@ class Article extends Model
         'title',
         'description',
         'body',
+        'rating',
     ];
 
     public function author(): BelongsTo
@@ -26,27 +27,5 @@ class Article extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
-    }
-
-    public function likes(): HasMany
-    {
-        return $this->hasMany(Like::class);
-    }
-
-    public function like($liked = true): Model
-    {
-        return $this->likes()->updateOrCreate(
-            [
-                'user_id' => auth()->id(),
-            ],
-            [
-                'liked' => $liked,
-            ]
-        );
-    }
-
-    public function dislike(): Model
-    {
-        return $this->like(false);
     }
 }

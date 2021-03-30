@@ -60,11 +60,11 @@ Route::prefix('article')->group(function () {
         ->middleware('auth')
         ->name('destroy');
 
-    Route::post('/like/{id}', [ArticleController::class, 'like'])
+    Route::put('/like/{id}', [ArticleController::class, 'like'])
         ->middleware('auth')
         ->name('like');
 
-    Route::delete('/dislike/{id}', [ArticleController::class, 'dislike'])
+    Route::put('/dislike/{id}', [ArticleController::class, 'dislike'])
         ->middleware('auth')
         ->name('dislike');
 });

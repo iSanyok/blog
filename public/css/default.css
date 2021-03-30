@@ -1571,6 +1571,7 @@ progress {
 @media (min-width: 576px) {
     .container-sm, .container {
         max-width: 540px;
+        overflow: hidden;
     }
 }
 @media (min-width: 768px) {
@@ -7826,6 +7827,11 @@ textarea.form-control-lg {
     margin-left: 3rem !important;
 }
 
+.mx-30 {
+    margin-right: 15rem !important;
+    margin-left: 15rem !important;
+}
+
 .mx-auto {
     margin-right: auto !important;
     margin-left: auto !important;
@@ -7976,6 +7982,10 @@ textarea.form-control-lg {
 
 .ms-5 {
     margin-left: 3rem !important;
+}
+
+.ms-29 {
+    margin-left: 29rem !important;
 }
 
 .ms-auto {

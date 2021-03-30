@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\File;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,10 +24,8 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $comments = $article->comments;
-        $likes = $article->likes->where('liked', true);
-        $dislikes = $article->likes->where('liked', false);
 
-        return view('article.show', compact('article', 'comments', 'likes', 'dislikes'));
+        return view('article.show', compact('article', 'comments'));
     }
 
     /**
@@ -126,9 +125,9 @@ class ArticleController extends Controller
      *
      * @param int $id
      * @param Request $request
-     * @return RedirectResponse
+     * @return JsonResponse
      */
-    public function storeComment(int $id, Request $request): RedirectResponse
+    public function storeComment(int $id, Request $request): JsonResponse
     {
         $request = $request->validate([
             'content' => 'required',
@@ -140,34 +139,40 @@ class ArticleController extends Controller
         $comment->user_id = $request['user_id'];
         $comment->save();
 
-        return back();
+        return response()->json([[
+            'user_id' => $comment->user->id,
+            'user_name' => $comment->user->name,
+            'content' => $comment->content,
+            'created_at' => $comment->created_at->format('d.m.Y'),
+        ]]);
     }
 
     /**
      * Поставить лайк на пост
      *
      * @param $id
-     * @return RedirectResponse
+     * @return JsonResponse
      */
-    public function like($id): RedirectResponse
+    public function like($id): JsonResponse
     {
         $article = Article::find($id);
-        $article->like();
+        $article->update(['rating' => $article->rating + 1]);
+        $article->save();
 
-        return back();
+        return response()->json([$article->rating]);
     }
 
     /**
      * Поставить дизлайк на пост
      *
      * @param $id
-     * @return RedirectResponse
+     * @return JsonResponse
      */
-    public function dislike($id): RedirectResponse
+    public function dislike($id): JsonResponse
     {
         $article = Article::find($id);
-        $article->dislike();
+        $article->update(['rating' => $article->rating - 1]);
 
-        return back();
+        return response()->json([$article->rating]);
     }
 }
