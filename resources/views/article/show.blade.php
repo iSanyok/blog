@@ -54,7 +54,10 @@
     </div>
     <div id="content" class="mt-5 mx-30" style="border-radius: 5px">
         @auth()
-            <textarea form="comment-form" style="width: 700px;" rows="4" name="content"></textarea>
+            <div class="form-floating">
+                <textarea name="content" form="comment-form" class="form-control"
+                          placeholder="Leave a comment here" style="height: 150px"></textarea>
+            </div>
             <input form="comment-form" type="hidden" name="user_id" value="{{ Auth::user()->id }}">
             <button id="comment-btn" form="comment-form" type="submit" class="btn btn-dark mt-3 mb-3">comment</button>
         @else
@@ -62,12 +65,14 @@
         @endauth
             <div id="comments">
                 @forelse($comments as $comment)
-                    <div style="margin-bottom: 1em">
-                        <div style="border: 1px solid black">
+                    <div class="card mt-2">
+                        <div class="card-header d-flex">
                             <a href="{{ route('profile', ['id' => $comment->user->id]) }}" style="text-decoration: none">
-                                <h2 style="font-size: 15px; border-bottom: 1px solid black; width: 699px">{{ $comment->user->name }}
-                                    : </h2></a>
-                            <p style="word-break: break-all">{{ $comment->content }}</p>
+                                <h5 style="color: black">{{ $comment->user->name }}</h5></a>
+                            <small class="ms-34">{{ $comment->created_at->format("d.m.Y") }}</small>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" style="word-break: break-all">{{ $comment->content }}</p>
                         </div>
                     </div>
                 @empty

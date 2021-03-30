@@ -48,17 +48,19 @@ $('#comment-btn').on('click', function (event) {
         data: $('#comment-form').serialize(),
         success: function (result) {
             let comment = `
-                <div style="margin-bottom: 1em">
-                        <div style="border: 1px solid black">
-                            <a href="/profile/${result[0].user_id}" style="text-decoration: none">
-                                <h2 style="font-size: 15px; border-bottom: 1px solid black; width: 699px">${result[0].user_name}
-                                    : </h2></a>
-                            <p style="word-break: break-all">${result[0].content}</p>
+                    <div class="card mt-2">
+                        <div class="card-header d-flex">
+                            <a href="${result[0].user_id}" style="text-decoration: none">
+                                <h5 style="color: black">${result[0].user_name}</h5></a>
+                                <small class="ms-34">${result[0].created_at}</small>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text" style="word-break: break-all">${result[0].content}</p>
                         </div>
                     </div>
             `
-            $('#comments').append(comment);
-            console.log(result[0].user_id);
+            $('#comments').prepend(comment);
+            console.log(result);
         },
         error: function () {
             console.log('error');
