@@ -21,7 +21,7 @@ function request(item) {
             }
             $.each(result, function (item) {
                 $('#sidebar').append(`
-                <div class="row g-0 bg-light position-relative mb-3" id="articles">
+                <div class="row g-0 bg-gray position-relative mb-3" id="articles" style="border-radius: 10px">
                     <div class="col-md-6 mb-md-0 p-md-4">
                         <img src="${result[item].banner}" class="w-100" alt="...">
                     </div>

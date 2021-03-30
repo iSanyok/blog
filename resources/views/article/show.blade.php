@@ -1,15 +1,21 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div id="content">
+    <div id="content" class="">
         <div class="title">
             <h2>{{ $article->title }}</h2>
             <span class="byline" style="word-break: break-all">{{ $article->description }}</span>
         </div>
-        <p><img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid"/></p>
-        <p style="word-break: break-all">{{ $article->body }}</p>
-        <label>Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
-                                                      style="color: black"> {{ $article->author->name }}</a></label>
+        <div class="d-flex">
+            <p><img src="{{ asset("banners") . "/" . $article->banner }}" alt="" class="img-fluid"/></p>
+        </div>
+        <div>
+            <p style="word-break: break-all">{{ $article->body }}</p>
+        </div>
+        <div>
+            <label>Author: <a href="{{ route('profile', ['id' => $article->author->id]) }}"
+                              style="color: black"> {{ $article->author->name }}</a></label>
+        </div>
 
         @can('update-article', $article)
             <div>
