@@ -72,4 +72,4 @@ Route::prefix('article')->group(function () {
 Route::get('/get/today', [SidebarController::class, 'getToday'])->name('getToday');
 Route::get('/get/week', [SidebarController::class, 'getWeek'])->name('getWeek');
 Route::get('/get/mouth', [SidebarController::class, 'getMouth'])->name('getMouth');
-Route::get('/get/yead', [SidebarController::class, 'getYear'])->name('getYear');
+Route::get('/get/year', [SidebarController::class, 'getYear'])->name('getYear');

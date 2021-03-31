@@ -30,13 +30,10 @@ class SidebarController extends Controller
 
     private function response(int $days = 0): JsonResponse
     {
-        $articles = Article::selectRaw('articles.*, sum(likes.liked) likes')
-            ->leftJoin('likes', 'likes.article_id', '=', 'articles.id')
-            ->where('articles.created_at', '>', $days? Carbon::now()->subDays($days) : Carbon::now()->subDay())
-            ->groupBy('likes.article_id')
-            ->orderBy('likes', 'desc')
+        $articles = Article::whereDate('created_at', '>', $days? Carbon::now()->subDays($days) : Carbon::now()->subDay())
             ->take(5)
-            ->get();
+            ->get()
+            ->sortByDesc('rating');
 
         $response = [];
 

@@ -17,7 +17,7 @@
                              style="position: absolute; bottom: 0; left: 10em">
                             <div class="order-1 p-2 bd-highlight">
                                 <small>{{ $article->updated_at->format('d.m.Y') }}</small></div>
-                            <div class="order-3 p-2 bd-highlight"><small>Likes: {{ count($article->likes) }}</small>
+                            <div class="order-3 p-2 bd-highlight"><small>Rating: {{ $article->rating }}</small>
                             </div>
                         </div>
                     </a>
